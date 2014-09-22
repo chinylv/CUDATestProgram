@@ -1,0 +1,13 @@
+#BUSB -q gpu
+#BSUB -J cuBLAS_Test
+#BSUB -L /bin/bash
+#BSUB -o %J.out
+#BSUB -e %J.err
+#BSUB -n 1
+#BSUB -x
+#BSUB -R "span[ptile=2]"
+
+MODULEPATH=/lustre/utility/modulefiles:$MODULEPATH
+module load cuda/5.5
+
+./cuBlasTest
